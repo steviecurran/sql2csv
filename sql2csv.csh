@@ -29,6 +29,8 @@ foreach i ($tables)
     sed 's/(//g' tmp2 > tmp # CLEANING UP
     sed "s/\'//g" tmp > tmp2
     sed 's/)//g' tmp2 > $i.csv
+   # sed 's/)//g' tmp2 > $infile-$i.csv # USE THIS INSTEAD OF PREVIOUS LINE IF THERE ARE OTHER SQL 
+                                        # FILES WITH SAME TABLE NAMES IN THE DIRECTORY/FOLDER
 end
 
 echo "$infile written to ..."
