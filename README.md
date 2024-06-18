@@ -1,6 +1,6 @@
 # sql2csv
 
-C shell script to convert an SQL file to CSVs (one for each table). Especially useful when running into errors like "Parse error: file is not a database" and would rather query the data base in python.
+C shell script to convert an SQL file to CSVs (one for each table). Especially useful when running into errors like "Parse error: file is not a database" and would rather query the database in python (or anything else apart from SQL).
 
 E.g.  ./sql2csv.csh  WILL GIVE 
 
