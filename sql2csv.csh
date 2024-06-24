@@ -33,7 +33,7 @@ foreach i ($tables)
     awk -v col=$lm2 '{if(NR%col){printf "%s ",$0 } else {printf "%s\n",$0}}' tmp2 > tmp # TRANSPOSING
     sed 's/ /,/g' tmp > tmp2  
     sed 's/FOREIGN//g' tmp2 > tmp  # CSV HEADER DONE
-    perl -pe 's/,\n/\n/g' tmp > header  # REMOVE COMMA AT END - SED CAN'T DO THIS
+    perl -pe 's/,\n/\n/g' tmp > header  # REMOVE COMMA AT END - sed CAN'T DO THIS
         
     if ($quotes == "y") then
 	sed -n '/`'$i'`/,/;/p' $infile >> header  # FETCH BLOCK OF TEXT - ADD HEADER AT END
@@ -47,10 +47,10 @@ foreach i ($tables)
     sed 's/(//g' tmp2 > tmp # CLEANING UP
     sed "s/\'//g" tmp > tmp2
     sed 's/)//g' tmp2 >  tmp
-    perl -pe 's/,\n/\n/g' tmp > $i.csv  # REMOVE COMMA AT END - SED CAN'T DO THIS 
+    perl -pe 's/,\n/\n/g' tmp > $i.csv  # REMOVE COMMA AT END 
     
-    #sed 's/)//g' tmp2 > $infile-$i.csv # USE THIS INSTEAD OF PREVIOUS LINE IF THERE ARE OTHER SQL 
-                                        # FILES WITH SAME TABLE NAMES IN THE DIRECTORY/FOLDER
+    #perl -pe 's/,\n/\n/g' tmp$infile-$i.csv # USE THIS INSTEAD OF PREVIOUS LINE IF THERE ARE 
+					# OTHER SQL FILES WITH SAME TABLE NAMES IN THE DIRECTORY/FOLDER
 end
 
 echo "$infile written to ..."
